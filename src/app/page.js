@@ -6,7 +6,7 @@ export default function Home() {
   const [tickers, setTickers] = useState({}); // Object to store data for all symbols
 
   useEffect(() => {
-    const symbols = ["btcusdt", "ethusdt", "bnbusdt"]; // Add more symbols as needed
+    const symbols = ["xrpusdt", "btcusdt", "ethusdt", "bnbusdt"]; // Add more symbols as needed
     const streams = symbols.map((symbol) => `${symbol}@ticker`).join("/");
     const binanceSocket = new WebSocket(
       `wss://stream.binance.com:9443/stream?streams=${streams}`
@@ -30,7 +30,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[20px_1fr_20px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="table-fixed w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -83,16 +83,16 @@ export default function Home() {
                   >
                     {symbol.toUpperCase()}
                   </th>
-                  <td className="px-6 py-4">{data.c}</td>
-                  <td className="px-6 py-4">{data.p}</td>
+                  <td className="px-6 py-4">{parseFloat(data.c)}</td>
+                  <td className="px-6 py-4">{parseFloat(data.p)}</td>
                   <td className="px-6 py-4">{data.P}%</td>
-                  <td className="px-6 py-4">{data.h}</td>
-                  <td className="px-6 py-4">{data.l}</td>
-                  <td className="px-6 py-4">{data.v}</td>
-                  <td className="px-6 py-4">{data.b}</td>
-                  <td className="px-6 py-4">{data.B}</td>
-                  <td className="px-6 py-4">{data.a}</td>
-                  <td className="px-6 py-4">{data.A}</td>
+                  <td className="px-6 py-4">{parseFloat(data.h)}</td>
+                  <td className="px-6 py-4">{parseFloat(data.l)}</td>
+                  <td className="px-6 py-4">{parseFloat(data.v)}</td>
+                  <td className="px-6 py-4">{parseFloat(data.b)}</td>
+                  <td className="px-6 py-4">{parseFloat(data.B)}</td>
+                  <td className="px-6 py-4">{parseFloat(data.a)}</td>
+                  <td className="px-6 py-4">{parseFloat(data.A)}</td>
                 </tr>
               ))}
             </tbody>

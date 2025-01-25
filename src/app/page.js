@@ -6,7 +6,7 @@ export default function Home() {
   const [tickers, setTickers] = useState({}); // Object to store data for all symbols
 
   useEffect(() => {
-    const symbols = ["xrpusdt", "btcusdt", "ethusdt", "bnbusdt"]; // Add more symbols as needed
+    const symbols = ["xrpusdt", "btcusdt", "ethusdt"]; // Add more symbols as needed
     const streams = symbols.map((symbol) => `${symbol}@ticker`).join("/");
     const binanceSocket = new WebSocket(
       `wss://stream.binance.com:9443/stream?streams=${streams}`
